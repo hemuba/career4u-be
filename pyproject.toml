@@ -1,0 +1,14 @@
+[project]
+name = "progetto-settembre-prove"     # Nome del package
+version = "0.0.1"                  # Versione
+requires-python = ">=3.10"         # Versione minima di Python
+	
+[build-system]
+requires = ["setuptools", "wheel"] # Tool di build
+build-backend = "setuptools.build_meta"
+	
+[tool.setuptools.package-dir]
+"" = "src"                         # Tutto il codice è sotto /src
+	
+[tool.setuptools.packages.find]
+where = ["src"]     
