@@ -1,5 +1,0 @@
-pyproject.toml
-src/progetto_settembre_prove.egg-info/PKG-INFO
-src/progetto_settembre_prove.egg-info/SOURCES.txt
-src/progetto_settembre_prove.egg-info/dependency_links.txt
-src/progetto_settembre_prove.egg-info/top_level.txt
