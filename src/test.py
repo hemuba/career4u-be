@@ -18,38 +18,30 @@ logger = logging.getLogger(__name__)
 sql = "SELECT TICKER, DATA, CLOSE_PRICE FROM ETF_HISTORY WHERE TICKER IN (SELECT TICKER FROM CURRENT_ETF) AND DATA >= '01-JAN-2021' ORDER BY TICKER, DATA"
 
 
-def db_retrieve(f_sql:str = sql, f_user:str =im_user, f_password:str =im_pwd, f_dsn:str = im_dsn) -> list[tuple]:
+def db_retrieve(f_sql:str = sql, f_user:str =im_user, f_password:str =im_pwd, f_dsn:str = im_dsn) -> typing.Generator:
     
     with odb.connect(user=f_user, password=f_password, dsn=f_dsn) as connection:
         with connection.cursor() as cursor:
             cursor.execute(f_sql)
-            table = cursor.fetchall()
-    logger.info(f"fetched {len(table)} rows using {f_sql}")
-    return table
+            yield from cursor
 
-def get_prices(i_ticker: str, table: list[tuple]) -> list[float]:
-    ticker_prices: list[float] = []
-    for i in range(len(table)):
-        ticker:str = table[i][0]
-        close_price:float = table[i][2]
+def get_prices(i_ticker: str, gen:typing.Generator) -> typing.Generator:
+    for ticker, data, close_price in gen:
         
         if ticker.lower() == i_ticker.lower():
-            ticker_prices.append(close_price)
-        
-    return ticker_prices
-        
-def get_percentage_return(ticker_prices: list[float]) -> list[float]:
-    if len(ticker_prices) < 2:
-        logger.error(f"Serie has less than two elements, cannot compute percentage return")
-        raise ValueError
-    ticker_r_percs: list[float] = []
-    for i in range(1, len(ticker_prices)):
-        if ticker_prices[i-1] == 0:
-            logger.error(f"{ticker_prices[i-1]} --> Zero value encountered in {__name__}, fix your series.")
-            raise ValueError
-        ticker_r_percs.append(ticker_prices[i] / ticker_prices[i-1] - 1)
-    return ticker_r_percs
+            yield close_price
 
+        
+def get_percentage_return(gen:typing.Generator) -> list[float]:
+    prev = None
+    percentage_returns = []
+    for cp in gen:
+        if prev is not None:
+           percentage_returns.append(cp / prev - 1)
+        prev = cp
+    return percentage_returns
+   
+   
 def check_series(a, b) -> None:
     if a is None or b is None or len(a) == 0 or len(b) == 0:
         raise ValueError("None/Empty series")
@@ -102,12 +94,12 @@ def get_correlation(cov, std_a: float, std_b: float) -> float:
         raise ValueError
     return cov/ (std_a * std_b)
     
-table = db_retrieve()
-
-ticker_a_prices = get_prices("eunl.de", table)
+gen_a = db_retrieve()
+gen_b = db_retrieve()
+ticker_a_prices = get_prices("eunl.de", gen_a)
 ticker_a_percs = get_percentage_return(ticker_a_prices)
 
-ticker_b_prices = get_prices("nqse.de", table)
+ticker_b_prices = get_prices("nqse.de", gen_b)
 ticker_b_percs = get_percentage_return(ticker_b_prices)
 
 
