@@ -1,0 +1,23 @@
+Alessandro competences inventory: liked and marketable 2025-09-26
+
+	languages:  competence: python - level: intermediate - action: automazione tasks ripetitive
+	languages:  competence: sql - level: intermediate - action: estrazione dati da database relazionali
+	languages:  competence: git - level: intermediate - action: versioning di tutto, files, codice, ecc.
+	languages:  competence: java - level: beginner - action: sviluppo EE
+	languages:  competence: pl/sql - level: beginner - action: automazioni DB Oracle
+	languages:  competence: bash - level: beginner - action: lavoro con FileSystem OS
+
+	OS:  competence: linux-filesystem - level: beginner - action: filesystem OpenSource piu' usato per sviluppo
+	OS:  competence: windows - level: beginner - action: filesystem chiuso, molto commerciale
+
+	domains:  competence: fitness/nutrizione - level: advanced - action: schede di allenamento/alimentazine
+	domains:  competence: system-design - level: beginner - action: creazione applicazioni EE con sistemi complessi
+	domains:  competence: algoritmi - level: beginner - action: miglioramento performance, pensiero logico
+	domains:  competence: math - level: beginner - action: miglioramento pensiero logico, mente logica
+	domains:  competence: impresa - level: beginner - action: sapersi posizionare nel mercato, sapersi vendere, riconoscere se stessi (offerta) e competitors
+
+	soft-skills:  competence: communication - level: intermediate - action: comunicazione con gli altri (attrarre), carisma
+	soft-skills:  competence: team leading - level: intermediate - action: saper gestire personale, risorse umane. Essere leader
+	soft-skills:  competence: problem-solving - level: intermediate - action: mente logica, resilienza e adattamento, emergere da situazioni difficili
+	soft-skills:  competence: time-management - level: intermediate - action: gestione del tempo. riuscire a rispettare scadenze, riuscire a prevedere imprevisti e includerli nelle scadenze
+
