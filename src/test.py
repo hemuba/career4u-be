@@ -5,29 +5,24 @@ import json
 import os
 
 
-logging_config = "logging.ini]"
+logging_config = "logging.ini"
 if os.path.exists(logging_config):
-    logging.config.fileConfig("logging.ini")
+    logging.config.fileConfig(logging_config)
 else:
-    print(f"ERROR: cannot use {logging_config} file as logger configuration: it does not exists.")
+   logging.basicConfig(level=logging.INFO)
 
 
 logger = logging.getLogger(__name__)
+os.makedirs("resources", exist_ok=True)
 
+def get_json_data(file_path:str) -> dict:
+    with open(file_path, "r", encoding="utf-8") as json_file:
+        data = json.load(json_file)
+        return data
 
-competencies_ale = {}
-with open("resources/alessandro_competencies.json", "r", encoding="utf-8") as alessando_competencies_file:
-    data = json.load(alessando_competencies_file)
-    for k, v in data.items():
-        competencies_ale[k] = v
-
-levels = {1: "beginner", 2: "intermediate", 3: "advanced"}
-
-competencies_to_action = {}
-with open("resources/competencies_to_action.json", "r", encoding="utf-8") as json_competencies_file:
-    data = json.load(json_competencies_file)
-    for k, v in data.items():
-        competencies_to_action[k] = v
+competencies_ale = get_json_data("resources/alessandro_competencies.json")
+levels = get_json_data("resources/levels_competencies.json")
+competencies_to_action = get_json_data("resources/competencies_to_action.json")
 
 def ask_yn(question: str) -> bool | None:
     ans = input(f"{question} (1 to yes, 0 to no)? ")
@@ -42,7 +37,7 @@ liked = {}
 for k, v in competencies_ale.items():
     liked_vals = []
     print(f"Checking competence group: {k}")
-    for comp, val in v:
+    for comp, val in v.items():
         question = f"Do you like competence {comp} "
         res = ask_yn(question)
         if res is True:
@@ -76,7 +71,7 @@ with open("resources/competenze.txt", "w", encoding="utf-8") as wf:
     wf.write(f"Alessandro competences inventory: liked and marketable {datetime.now().date()}\n\n")
     for k, v in market_valuable.items():
         for comp, val in v:
-            wf.write(f"\t{k}:  competence: {comp} - level: {levels[val]} - action: {competencies_to_action.get(comp,  "No action added to the compentence.")}\n")
+            wf.write(f"\t{k}:  competence: {comp} - level: {levels[str(val)]} - action: {competencies_to_action.get(comp,  "No action added to the compentence.")}\n")
         wf.write("\n")
 
 

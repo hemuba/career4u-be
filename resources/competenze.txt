@@ -8,9 +8,8 @@ Alessandro competences inventory: liked and marketable 2025-09-26
 	languages:  competence: bash - level: beginner - action: lavoro con FileSystem OS
 
 	OS:  competence: linux-filesystem - level: beginner - action: filesystem OpenSource piu' usato per sviluppo
-	OS:  competence: windows - level: beginner - action: filesystem chiuso, molto commerciale
 
-	domains:  competence: fitness/nutrizione - level: advanced - action: schede di allenamento/alimentazine
+	domains:  competence: personal finance - level: intermediate - action: budgetting, cash flow, investimenti
 	domains:  competence: system-design - level: beginner - action: creazione applicazioni EE con sistemi complessi
 	domains:  competence: algoritmi - level: beginner - action: miglioramento performance, pensiero logico
 	domains:  competence: math - level: beginner - action: miglioramento pensiero logico, mente logica
