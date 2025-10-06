@@ -1,2 +1,13 @@
-/logs
-logs
+*.egg-info
+
+.env
+
+logs/
+
+__pycache__/
+
+*.pyc
+
+.vscode/
+
+progetto-settembre/

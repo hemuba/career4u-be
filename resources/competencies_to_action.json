@@ -1,0 +1,20 @@
+{
+    "python": "automazione tasks ripetitive",
+    "sql": "estrazione dati da database relazionali",
+    "git": "versioning di tutto, files, codice, ecc.",
+    "java": "sviluppo EE",
+    "pl/sql": "automazioni DB Oracle",
+    "bash": "lavoro con FileSystem OS",
+    "linux-filesystem": "filesystem OpenSource piu' usato per sviluppo",
+    "windows": "filesystem chiuso, molto commerciale",
+    "fitness/nutrizione": "schede di allenamento/alimentazine",
+    "personal finance": "budgetting, cash flow, investimenti",
+    "system-design": "creazione applicazioni EE con sistemi complessi",
+    "algoritmi": "miglioramento performance, pensiero logico",
+    "math": "miglioramento pensiero logico, mente logica",
+    "impresa": "sapersi posizionare nel mercato, sapersi vendere, riconoscere se stessi (offerta) e competitors",
+    "communication": "comunicazione con gli altri (attrarre), carisma",
+    "team leading": "saper gestire personale, risorse umane. Essere leader",
+    "problem-solving": "mente logica, resilienza e adattamento, emergere da situazioni difficili",
+    "time-management": "gestione del tempo. riuscire a rispettare scadenze, riuscire a prevedere imprevisti e includerli nelle scadenze"
+}

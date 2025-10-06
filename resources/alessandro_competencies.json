@@ -1,0 +1,28 @@
+{
+  "languages": {
+    "python": 2,
+    "sql": 2,
+    "git": 2,
+    "java": 1,
+    "pl/sql": 1,
+    "bash": 1
+  },
+  "OS": {
+    "linux-filesystem": 1,
+    "windows": 1
+  },
+  "domains": {
+    "fitness/nutrizione": 3,
+    "personal finance": 2,
+    "system-design": 1,
+    "algoritmi": 1,
+    "math": 1,
+    "impresa": 1
+  },
+  "soft-skills": {
+    "communication": 2,
+    "team leading": 2,
+    "problem-solving": 2,
+    "time-management": 2
+  }
+}
