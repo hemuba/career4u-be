@@ -67,7 +67,7 @@ def check_congiunta(f_pA, f_pB, f_pAB):
     return f_pAB > f_pA * f_pB 
 
 def is_dependent(pA: float, pB: float, pAB: float, tau: float = 1e-3) -> bool:
-    return pAB > pA * pB + tau  # dipendenza positiva “non banale”
+    return pAB > pA * pB + tau 
 
 def get_condizionata(f_pAB, f_pB):
     if f_pB == 0:
